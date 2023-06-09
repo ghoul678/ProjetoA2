@@ -42,12 +42,6 @@ public class EstadoRepository implements PanacheRepository<Estado> {
     }
 
     @Override
-    public PanacheQuery<Estado> findAll() {
-        // TODO Auto-generated method stub
-        return PanacheRepository.super.findAll();
-    }
-
-    @Override
     public boolean isPersistent(Estado entity) {
         // TODO Auto-generated method stub
         return PanacheRepository.super.isPersistent(entity);

@@ -1,7 +1,9 @@
 package helloquarkus.DTO;
 
-public record AuthUsuarioDTO(     
-String email,
+public record AuthUsuarioDTO (
+    String email,
 String senha
 )
 {}
+
+

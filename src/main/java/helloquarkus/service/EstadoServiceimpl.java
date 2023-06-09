@@ -43,11 +43,11 @@ public class EstadoServiceimpl implements EstadoService {
         return null;
     }
 
-    @Override
+   /*  @Override
     public List<EstadoDTO> getAll() {
         // TODO Auto-generated method stub
         return null;
-    }
+    } */
 
     @Override
     public EstadoDTO update(Long id, EstadoDTO productDTO) {

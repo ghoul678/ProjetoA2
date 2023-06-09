@@ -9,6 +9,12 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class usuariorepository implements PanacheRepository<Usuario> {
 
+    public Usuario findByEmailAndSenha(String email, String senha){
+        if (email == null || senha == null)
+            return null;
+            
+        return find("email = ?1 AND senha = ?2 ", email, senha).firstResult();
+    }
     
     @Override
     public long count() {
@@ -32,11 +38,11 @@ public class usuariorepository implements PanacheRepository<Usuario> {
         return PanacheRepository.super.deleteAll();
     }
 
-    @Override
+    /* @Override
     public PanacheQuery<Usuario> find(String query, Object... params) {
         // TODO Auto-generated method stub
         return PanacheRepository.super.find(query, params);
-    }
+    } */
 
     @Override
     public PanacheQuery<Usuario> findAll() {

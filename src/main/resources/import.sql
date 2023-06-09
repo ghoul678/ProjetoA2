@@ -20,8 +20,10 @@ insert into estado (nome, sigla) values( 'Pará', 'PA');
 
 insert into municipio (nome, id_estado) values( 'Palmas', 1);
 insert into municipio (nome, id_estado) values( 'Paraiso do Tocantins', 1);  */
-
-insert into usuario (email, senha, id) values('goku','0cctg7WgpEz7kC/AzVC+KX+bZLPXDtgJDqWWZWnmzHH+7Na2YVxYYSFPxcf7ImAjqfNckx0aT4n5qKM7WEoeEQ==', 2);
+insert into estado (id,nome, sigla) values( 1,'Tocantins', 'TO');
+insert into Usuario (email, senha,id) values('goku','TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==',1);
+insert into perfis (id_usuario,perfil) values( 1,1);
+ /* insert into perfis(id_usuario,perfil)values(1,'Admin');   */ 
 --insert into usuario (login, senha, id_pessoa_fisica) values('fredson','TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', 2);
 
 /* insert into perfis (id_usuario, perfil) values (1, 'Admin');

@@ -1,5 +1,7 @@
 package helloquarkus.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Perfil {
     ADMIN(1, "Admin"),
     USER(2, "User");

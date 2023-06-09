@@ -3,6 +3,8 @@ package helloquarkus.service;
 import java.util.List;
 
 import helloquarkus.DTO.UsuarioDTO;
+import helloquarkus.model.Usuario;
+import helloquarkus.repository.usuariorepository;
 
 public interface UsuarioService {
     // recursos basicos
@@ -13,6 +15,8 @@ public interface UsuarioService {
     UsuarioDTO create(UsuarioDTO productDTO);
 
     UsuarioDTO update(Long id, UsuarioDTO productDTO);
+    
+    Usuario findByEmailAndSenha(String email, String senha);
 
     void delete(Long id);
 

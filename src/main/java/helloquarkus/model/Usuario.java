@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 //import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
-
+//import jakarta.persistence.Entity;
 @Entity
 public class Usuario {
     @JoinColumn
@@ -19,8 +19,11 @@ public class Usuario {
     private Long id;
     @JoinColumn
     private String nome;
-    @JoinColumn
-    private String email;//;entenda como logind do usuario
+    
+  @JoinColumn 
+  private String email;//;entenda como logind do usuario
+  
+  @JoinColumn 
     private String senha;
     @JoinColumn
     private String cpf;
@@ -33,10 +36,11 @@ public class Usuario {
     @JoinColumn
     @ManyToOne
     private Endereco endereco;
+
     @ElementCollection
     @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
     @Column(name = "perfil", length = 30)
-    private Set<Perfil> perfil;
+    private Set<Perfil> perfis;
 
    public Endereco getEndereco() {
         return endereco;
@@ -46,13 +50,7 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public Set<Perfil> getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Set<Perfil> perfil) {
-        this.perfil = perfil;
-    }
+   
 
 
    /*  public Usuario(Long id, String nome, String email, String senha, String cpf, Telefone whatsusuario,
@@ -114,6 +112,14 @@ public class Usuario {
     }
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Set<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void setPerfis(Set<Perfil> perfis) {
+        this.perfis = perfis;
     }
 
     

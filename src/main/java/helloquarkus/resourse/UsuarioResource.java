@@ -1,7 +1,18 @@
 package helloquarkus.resourse;
 import java.util.List;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Base64;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
+import jakarta.enterprise.context.ApplicationScoped;
+
+
 import helloquarkus.DTO.UsuarioDTO;
+import helloquarkus.model.Usuario;
 import helloquarkus.service.UsuarioService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.Consumes;
@@ -24,6 +35,7 @@ public class UsuarioResource {
 
    @jakarta.inject.Inject
   UsuarioService usuario;
+   
 
 @GET
 @RolesAllowed({"Admin","User"})
@@ -61,6 +73,10 @@ public List<UsuarioDTO> findByNome(@PathParam("nome") String nome) {
 public long count() {
    return usuario.count();
 }
+public Usuario findByEmailAndSenha(String email, String senha) {
+   return usuario.findByEmailAndSenha(email, senha);
+}
+
 
 
  

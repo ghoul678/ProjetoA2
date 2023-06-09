@@ -7,6 +7,8 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import com.oracle.svm.core.annotate.Delete;
 
 import helloquarkus.DTO.EstadoDTO;
+import helloquarkus.model.Estado;
+import helloquarkus.repository.EstadoRepository;
 import helloquarkus.service.EstadoService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.GET;
@@ -20,10 +22,13 @@ public class EstadoResource {
    @jakarta.inject.Inject
    EstadoService estado;
 
+   @jakarta.inject.Inject
+   EstadoRepository query;
+
    @GET
-   @RolesAllowed({"Admin","User"})
-   public List<EstadoDTO> getAll() {
-      return estado.getAll();
+  @RolesAllowed({"Admin","User"})
+   public List<Estado> getAll() {
+      return query.findAll().list();
    }
    @GET
    @PathParam("/{id}")
