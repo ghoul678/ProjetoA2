@@ -25,5 +25,11 @@ public class CompraServiceimpl implements CompraService{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setItemsCompra'");
     }
+
+    @Override
+    public CompraDTO getTotalCompra() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }

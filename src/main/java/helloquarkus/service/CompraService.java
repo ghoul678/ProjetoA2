@@ -12,4 +12,6 @@ public interface CompraService {
     CompraDTO getItemsCompra();
 
     CompraDTO setItemsCompra(List<ItemCompra> itemsCompra);
+
+    CompraDTO getTotalCompra(); 
 }

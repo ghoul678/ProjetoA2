@@ -1,6 +1,7 @@
 package helloquarkus.resourse;
 import java.util.List;
-
+import java.io.File;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Base64;
@@ -13,11 +14,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import helloquarkus.DTO.UsuarioDTO;
 import helloquarkus.model.Usuario;
+import helloquarkus.service.FileService;
 import helloquarkus.service.UsuarioService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -35,8 +38,27 @@ public class UsuarioResource {
 
    @jakarta.inject.Inject
   UsuarioService usuario;
-   
 
+   @jakarta.inject.Inject
+  FileService imagemdoUsuario;
+   
+    @PATCH
+    @Path("/novaimagem")
+    @RolesAllowed({"Admin","User"})
+   @Produces(MediaType.APPLICATION_OCTET_STREAM)
+ /*    public Response salvarImagem(@MultipartForm ImageForm form) */
+   public String salvarImagemUsuario(byte[] imagem, String nomeImagem) throws IOException {
+      return imagemdoUsuario.salvarImagemUsuario(imagem, nomeImagem);
+   }
+
+    @GET
+    @Path("/download/{nomeImagem}")
+    @RolesAllowed({"Admin","User"})
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+   public File download(String nomeArquivo) {
+      return imagemdoUsuario.download(nomeArquivo);
+   }
+   
 @GET
 @RolesAllowed({"Admin","User"})
 public List<UsuarioDTO> getAll() {

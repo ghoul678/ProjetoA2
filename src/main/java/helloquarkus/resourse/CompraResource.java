@@ -30,6 +30,11 @@ public class CompraResource {
     public CompraDTO setItemsCompra(List<ItemCompra> itemsCompra) {
         return compra.setItemsCompra(itemsCompra);
     }
+    
+    @POST
+    public CompraDTO getTotalCompra() {
+        return compra.getTotalCompra();
+    }
 
     
 }

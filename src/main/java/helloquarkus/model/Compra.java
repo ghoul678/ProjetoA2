@@ -27,12 +27,15 @@ public class Compra {
     @JoinColumn   
     @ManyToOne 
     private Endereco enderecocompra;
+    @JoinColumn
+    @OneToOne
+    private Pagamento pagamentocompra;
     
     public Usuario getUsuariocompra() {
         return usuariocompra;
     }
 
-    public void setUsuariocompra(Usuario usuariocompra) {
+    public void setUsuariocompra(final Usuario usuariocompra) {
         this.usuariocompra = usuariocompra;
     }
 /* 
@@ -48,26 +51,26 @@ public class Compra {
     public ItemCompra getItemcompra() {
         return itemcompra;
     }
-    public void setItemcompra(ItemCompra itemcompra) {
+    public void setItemcompra(final ItemCompra itemcompra) {
         this.itemcompra = itemcompra;
     }
 
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
     public Date getDatacompra() {
         return datacompra;
     }
-    public void setDatacompra(Date datacompra) {
+    public void setDatacompra(final Date datacompra) {
         this.datacompra = datacompra;
     }
     public Double getTotalCompra() {
         return totalCompra;
     }
-    public void setTotalCompra(Double totalCompra) {
+    public void setTotalCompra(final Double totalCompra) {
         this.totalCompra = totalCompra;
     }
 

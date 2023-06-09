@@ -10,9 +10,9 @@ public interface EnderecoService {
 
     EnderecoDTO findById(Long id);
 
-    EnderecoDTO create(EnderecoDTO productDTO);
+    EnderecoDTO create(EnderecoDTO endereco);
 
-    EnderecoDTO update(Long id, EnderecoDTO productDTO);
+    EnderecoDTO update(Long id, EnderecoDTO endereco);
 
     void delete(Long id);
 

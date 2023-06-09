@@ -2,19 +2,15 @@ package helloquarkus.DTO;
 
 import java.sql.Date;
 
+import helloquarkus.model.Compra;
 import helloquarkus.model.ItemCompra;
 
 public class CompraDTO {
-    private Double valorTotalCompra;
+    
     private Date dataCompra;
     private ItemCompra itemsCompra;
-    
-    public Double getValorTotalCompra() {
-        return valorTotalCompra;
-    }
-    public void setValorTotalCompra(Double valorTotalCompra) {
-        this.valorTotalCompra = valorTotalCompra;
-    }
+    private Compra valorTotalCompra;
+   
     public Date getDataCompra() {
         return dataCompra;
     }
@@ -26,6 +22,12 @@ public class CompraDTO {
     }
     public void setItemsCompra(ItemCompra itemsCompra) {
         this.itemsCompra = itemsCompra;
+    }
+    public Compra getValorTotalCompra() {
+        return valorTotalCompra;
+    }
+    public void setValorTotalCompra(Compra valorTotalCompra) {
+        this.valorTotalCompra = valorTotalCompra;
     }
     
 
