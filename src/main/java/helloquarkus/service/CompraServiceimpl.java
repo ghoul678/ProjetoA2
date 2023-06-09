@@ -4,7 +4,8 @@ import java.util.List;
 
 import helloquarkus.DTO.CompraDTO;
 import helloquarkus.model.ItemCompra;
-
+import jakarta.enterprise.context.ApplicationScoped;
+@ApplicationScoped
 public class CompraServiceimpl implements CompraService{
 
     @Override
