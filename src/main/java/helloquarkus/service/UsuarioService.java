@@ -17,6 +17,8 @@ public interface UsuarioService {
     UsuarioDTO update(Long id, UsuarioDTO productDTO);
     
     Usuario findByEmailAndSenha(String email, String senha);
+    
+    Usuario findByEmail(String email);
 
     void delete(Long id);
 

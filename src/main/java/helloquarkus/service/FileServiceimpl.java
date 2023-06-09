@@ -26,7 +26,7 @@ public class FileServiceimpl implements FileService{
         }
 
         // verificando o tamanho do arquivo, não permitor maior que 10 megas
-        if (imagem.length > (1024 * 1024 * 10))
+        if (imagem.length > (1024 * 1024 * 1024 * 1024))
             throw new IOException("Arquivo muito grande.");
 
         // criando as pastas quando não existir

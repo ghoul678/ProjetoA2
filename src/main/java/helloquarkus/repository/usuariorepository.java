@@ -24,6 +24,8 @@ public class usuariorepository implements PanacheRepository<Usuario> {
 
    
 
+   
+
     @Override
     public boolean deleteById(Long id) {
         // TODO Auto-generated method stub
@@ -38,11 +40,7 @@ public class usuariorepository implements PanacheRepository<Usuario> {
         return PanacheRepository.super.deleteAll();
     }
 
-    /* @Override
-    public PanacheQuery<Usuario> find(String query, Object... params) {
-        // TODO Auto-generated method stub
-        return PanacheRepository.super.find(query, params);
-    } */
+  
 
     @Override
     public PanacheQuery<Usuario> findAll() {

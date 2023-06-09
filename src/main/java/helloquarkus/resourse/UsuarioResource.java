@@ -2,17 +2,12 @@ package helloquarkus.resourse;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Base64;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-
-import jakarta.enterprise.context.ApplicationScoped;
-
+import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import helloquarkus.DTO.UsuarioDTO;
+import helloquarkus.application.Result;
+import helloquarkus.form.ImageForm;
 import helloquarkus.model.Usuario;
 import helloquarkus.service.FileService;
 import helloquarkus.service.UsuarioService;
@@ -42,23 +37,38 @@ public class UsuarioResource {
    @jakarta.inject.Inject
   FileService imagemdoUsuario;
    
-    @PATCH
+   @jakarta.inject.Inject
+  JsonWebToken jwt;
+   
+     @PATCH
     @Path("/novaimagem")
     @RolesAllowed({"Admin","User"})
-   @Produces(MediaType.APPLICATION_OCTET_STREAM)
- /*    public Response salvarImagem(@MultipartForm ImageForm form) */
-   public String salvarImagemUsuario(byte[] imagem, String nomeImagem) throws IOException {
-      return imagemdoUsuario.salvarImagemUsuario(imagem, nomeImagem);
-   }
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response salvarImagem(@MultipartForm ImageForm form){
+        String nomeImagem = "";
+
+        try {
+            nomeImagem = imagemdoUsuario.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
+        } catch (IOException e) {
+            Result result = new Result(e.getMessage());
+            return Response.status(Status.CONFLICT).entity(result).build();
+        } 
+
+        // obtendo o login a partir do token
+        String email = jwt.getSubject();
+        Usuario usuarioDTO = usuario.findByEmail(email);
+
+        return Response.ok(usuarioDTO).build();
+    }
 
     @GET
     @Path("/download/{nomeImagem}")
     @RolesAllowed({"Admin","User"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
-   public File download(String nomeArquivo) {
+public File download(String nomeArquivo) {
       return imagemdoUsuario.download(nomeArquivo);
    }
-   
+
 @GET
 @RolesAllowed({"Admin","User"})
 public List<UsuarioDTO> getAll() {

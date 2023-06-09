@@ -64,5 +64,16 @@ public class UsuarioServiceimpl implements UsuarioService {
         return usuariorepository.findByEmailAndSenha(email, senha);
     }
 
+    @Override
+    public Usuario findByEmail(String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
+    }
+
+    /* @Override
+    public Usuario findByEmail(String email) {
+      if()
+    } */
+
     
 }
